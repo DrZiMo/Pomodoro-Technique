@@ -75,7 +75,7 @@ function runTheTimer() {
                     }
                 }
 
-                changeTheCondition();
+                updateCycle();
 
             } else {
                 currentHour--;
@@ -93,7 +93,8 @@ function runTheTimer() {
     }
 }
 
-function changeTheCondition() {
+// Update the cycle
+function updateCycle() {
     if (focusing) {
         currentHour = defaultHour;
         currentMin = defaultMin;
