@@ -50,6 +50,9 @@ let time = null;
 
 // Starting the timer
 function startTimer() {
+    currentHour = defaultHour;
+    currentMin = defaultMin;
+    currentSec = defaultSec;
     if (!running) {
         running = true;
         focusing = true;
@@ -162,6 +165,7 @@ function resetTheTimer() {
 
 // Saving new time
 function saveNewTime() {
+    resetTheTimer();
     if ((parseInt(hoursInput.value) === 0 && parseInt(minInput.value) === 0 && parseInt(secInput.value) === 0) ||
         (parseInt(hoursShortInput.value) === 0 && parseInt(minShortInput.value) === 0 && parseInt(secShortInput.value) === 0) ||
         (parseInt(hoursLongInput.value) === 0 && parseInt(minLongInput.value) === 0 && parseInt(secLongInput.value) === 0)) {
