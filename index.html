@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="script.js" defer></script>
-    <title>Pomodoro Technique</title>
+    <title>Pomodoro Timer</title>
 </head>
 
 <body>
     <div class="container w-[90%] md:w-[70%] mx-auto my-5">
         <div class="timer-part border p-4 rounded-md flex flex-col items-center gap-4">
-            <div class="title font-semibold text-2xl">Pomodoro Technique</div>
+            <div class="title font-semibold text-2xl">Pomodoro Timer</div>
             <div class="status bg-green-400 px-6 py-2 rounded-full font-semibold ">Focusing</div>
             <div class="timer-clock text-8xl">
                 <span class="clock-hour">00</span>:<span class="clock-min">45</span>:<span class="clock-sec">00</span>
@@ -31,28 +31,37 @@
         </div>
         <div class="input-part border p-4 rounded-md mt-6">
             <div class="inputs">
-                <div class="w-[300px] mx-auto mt-6 text-xl text-gray-400 mb-2">Timer</div>
+                <div class="timer-label w-[300px] mx-auto mt-6 text-xl text-gray-400 mb-2">Timer</div>
                 <div class="timer-inputs grid grid-cols-3 w-[300px] mx-auto gap-6">
-                    <input type="number" class="hours-input border p-2 text-xl rounded-md text-right" value="00">
-                    <input type="number" class="hours-input border p-2 text-xl rounded-md text-right" value="45">
-                    <input type="number" class="hours-input border p-2 text-xl rounded-md text-right" value="00">
+                    <input type="number" class="hours-input border p-2 text-xl rounded-md text-right" value="0" min="0"
+                        max="59">
+                    <input type="number" class="min-input border p-2 text-xl rounded-md text-right" value="45" min="0"
+                        max="59">
+                    <input type="number" class="sec-input border p-2 text-xl rounded-md text-right" value="0" min="0"
+                        max="59">
                 </div>
-                <div class="w-[300px] mx-auto mt-6 text-xl text-gray-400 mb-2">Short Break</div>
+                <div class="short-label w-[300px] mx-auto mt-6 text-xl text-gray-400 mb-2">Short Break</div>
                 <div class="short-break-inputs grid grid-cols-3 w-[300px] mx-auto gap-6">
-                    <input type="number" class="hours-input border p-2 text-xl rounded-md text-right" value="00">
-                    <input type="number" class="hours-input border p-2 text-xl rounded-md text-right" value="15">
-                    <input type="number" class="hours-input border p-2 text-xl rounded-md text-right" value="00">
+                    <input type="number" class="hours-short-input border p-2 text-xl rounded-md text-right" value="0"
+                        min="0" max="59">
+                    <input type="number" class="min-short-input border p-2 text-xl rounded-md text-right" value="15"
+                        min="0" max="59">
+                    <input type="number" class="sec-short-input border p-2 text-xl rounded-md text-right" value="0"
+                        min="0" max="59">
                 </div>
-                <div class="w-[300px] mx-auto mt-6 text-xl text-gray-400 mb-2">Long Break</div>
+                <div class="long-label w-[300px] mx-auto mt-6 text-xl text-gray-400 mb-2">Long Break</div>
                 <div class="long-break-inputs grid grid-cols-3 w-[300px] mx-auto gap-6">
-                    <input type="number" class="hours-input border p-2 text-xl rounded-md text-right" value="00">
-                    <input type="number" class="hours-input border p-2 text-xl rounded-md text-right" value="30">
-                    <input type="number" class="hours-input border p-2 text-xl rounded-md text-right" value="00">
+                    <input type="number" class="hours-long-input border p-2 text-xl rounded-md text-right" value="0"
+                        min="0" max="59">
+                    <input type="number" class="min-long-input border p-2 text-xl rounded-md text-right" value="30"
+                        min="0" max="59">
+                    <input type="number" class="sec-long-input border p-2 text-xl rounded-md text-right" value="0"
+                        min="0" max="59">
                 </div>
             </div>
             <div class="w-[300px] flex justify-end mx-auto">
                 <button
-                    class="bg-blue-400 px-6 py-2 rounded-md font-bold text-white mt-5 transition hover:bg-blue-600">Save</button>
+                    class="saveBtn bg-blue-400 px-6 py-2 rounded-md font-bold text-white mt-5 transition hover:bg-blue-600">Save</button>
             </div>
         </div>
     </div>

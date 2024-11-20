@@ -7,22 +7,40 @@ const pauseBtn = document.querySelector(".pauseBtn");
 const startBtn = document.querySelector(".startBtn");
 const statusEl = document.querySelector(".status");
 
+const timerLabel = document.querySelector(".timer-label");
+const shortLabel = document.querySelector(".short-label");
+const longLabel = document.querySelector(".long-label");
+
+const hoursInput = document.querySelector(".hours-input");
+const minInput = document.querySelector(".min-input");
+const secInput = document.querySelector(".sec-input");
+
+const hoursShortInput = document.querySelector(".hours-short-input");
+const minShortInput = document.querySelector(".min-short-input");
+const secShortInput = document.querySelector(".sec-short-input");
+
+const hoursLongInput = document.querySelector(".hours-long-input");
+const minLongInput = document.querySelector(".min-long-input");
+const secLongInput = document.querySelector(".sec-long-input");
+
+const saveBtn = document.querySelector(".saveBtn");
+
 let intervalCount = 1;
 let running = false;
 let focusing = false;
 let completedRestCycle = false;
 
-const defaultHour = 0;
-const defaultMin = 45;
-const defaultSec = 0;
+let defaultHour = 0;
+let defaultMin = 45;
+let defaultSec = 0;
 
-const defaultShortHour = 0;
-const defaultShortMin = 15;
-const defaultShortSec = 0;
+let defaultShortHour = 0;
+let defaultShortMin = 15;
+let defaultShortSec = 0;
 
-const defaultLongHour = 0;
-const defaultLongMin = 30;
-const defaultLongSec = 0;
+let defaultLongHour = 0;
+let defaultLongMin = 30;
+let defaultLongSec = 0;
 
 let currentHour = defaultHour;
 let currentMin = defaultMin;
@@ -30,6 +48,7 @@ let currentSec = defaultSec;
 
 let time = null;
 
+// Starting the timer
 function startTimer() {
     if (!running) {
         running = true;
@@ -141,6 +160,41 @@ function resetTheTimer() {
     statusEl.textContent = "Focusing";
 }
 
+// Saving new time
+function saveNewTime() {
+    if ((parseInt(hoursInput.value) === 0 && parseInt(minInput.value) === 0 && parseInt(secInput.value) === 0) ||
+        (parseInt(hoursShortInput.value) === 0 && parseInt(minShortInput.value) === 0 && parseInt(secShortInput.value) === 0) ||
+        (parseInt(hoursLongInput.value) === 0 && parseInt(minLongInput.value) === 0 && parseInt(secLongInput.value) === 0)) {
+        alert("the values can't be zero");
+    }
+    else if ((parseInt(hoursInput.value) > 59 || parseInt(minInput.value) > 59 || parseInt(secInput.value) > 59) ||
+        (parseInt(hoursShortInput.value) > 59 || parseInt(minShortInput.value) > 59 || parseInt(secShortInput.value) > 59) ||
+        (parseInt(hoursLongInput.value) > 59 || parseInt(minLongInput.value) > 59 || parseInt(secLongInput.value) > 59)) {
+        alert("some values are over the limit");
+    }
+    else if ((parseInt(hoursInput.value) < 0 || parseInt(minInput.value) < 0 || parseInt(secInput.value) < 0) ||
+        (parseInt(hoursShortInput.value) < 0 || parseInt(minShortInput.value) < 0 || parseInt(secShortInput.value) < 0) ||
+        (parseInt(hoursLongInput.value) < 0 || parseInt(minLongInput.value) < 0 || parseInt(secLongInput.value) < 0)) {
+        alert("some values are under the limit");
+    }
+    else {
+        defaultHour = parseInt(hoursInput.value);
+        defaultMin = parseInt(minInput.value);
+        defaultSec = parseInt(secInput.value);
+
+        defaultShortHour = parseInt(hoursShortInput.value);
+        defaultShortMin = parseInt(minShortInput.value);
+        defaultShortSec = parseInt(secShortInput.value);
+
+        defaultLongHour = parseInt(hoursLongInput.value);
+        defaultLongMin = parseInt(minLongInput.value);
+        defaultLongSec = parseInt(secLongInput.value);
+
+        changeTimer(defaultHour, defaultMin, defaultSec);
+    }
+
+}
+
 // Events Part
 window.addEventListener(
     "load",
@@ -149,3 +203,4 @@ window.addEventListener(
 startBtn.addEventListener("click", startTimer);
 pauseBtn.addEventListener("click", pauseTheTimer);
 resetBtn.addEventListener("click", resetTheTimer);
+saveBtn.addEventListener("click", saveNewTime);
